@@ -13,11 +13,18 @@ app.get("/data", (req, res) => {
     Mumbai: "27C",
   };
   //const { movie } = req.query;
-  const { city } = req.query;
+  const { city } = req.query; //or params
   const returnData = data[city];
-  res.send(
-    `This will contain details about the ${city}-temprature ${returnData}`
-  );
+  res
+    .status(200)
+    .send(
+      `This will contain details about the ${city}-temprature ${returnData}`
+    );
+});
+
+app.get("/students/:students_id", (req, res) => {
+  const { student_code } = req.params;
+  res.status(200).send(`the student id is ${student_code}`);
 });
 
 app.listen(8080, "localhost", () => {
